@@ -26,9 +26,9 @@ public class Employee {
         @JoinColumn(name = "job_id")
         private Job job;
 
-        private DecimalFormat salary;
+        private double salary;
 
-        private DecimalFormat commission_pct;
+        private double commission_pct;
 
         private  int enabled;
 
@@ -104,21 +104,7 @@ public class Employee {
                 this.job = job;
         }
 
-        public DecimalFormat getSalary() {
-                return salary;
-        }
 
-        public void setSalary(DecimalFormat salary) {
-                this.salary = salary;
-        }
-
-        public DecimalFormat getCommission_pct() {
-                return commission_pct;
-        }
-
-        public void setCommission_pct(DecimalFormat commission_pct) {
-                this.commission_pct = commission_pct;
-        }
 
         public int getEnabled() {
                 return enabled;

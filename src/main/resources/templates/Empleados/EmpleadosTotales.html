@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+        <title>Empleados Totales</title>
+    </head>
+    <body>
+        <main>
+            <div class="container px-4 py-5">
+                <h1 class="pb-2 border-bottom">Lista de empleados</h1>
+                <div class="d-flex mt-3 mb-4">
+                    <a class="btn btn-primary" th:href="@{'/crearNuevoEmpleado'}">Nuevo Empleado</a>
+                    <a class="btn btn-secondary ms-auto" th:href="@{'/'}">Regresar</a>
+                </div>
+
+                <form method="post" th:action="@{/BuscarEmpleado}">
+                    <input name="searchField" class="form-control mb-3" type="text" placeholder="Search"/>
+                </form>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Puesto</th>
+                            <th>Departamento</th>
+                            <th>Ciudad</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="empleado, info : ${listaEmpleados}">
+                            <td th:text="${info.index + 1}"></td>
+                            <td th:text="${empleado.first_name}"></td>
+                            <td th:text="${empleado.last_name}"></td>
+                            <td th:text="${empleado.job.job_title}"></td>
+                            <td th:text="${empleado.department.department_name}"></td>
+                            <td th:text="${empleado.department.location.city}"></td>
+                            <td><a class="btn btn-primary"
+                                   th:href="@{'/editarEmpleado?id_empleado=' + ${empleado.employee_id}}">Editar</a>
+                            </td>
+                            <td><a class="btn btn-danger"
+                                   th:href="@{'/borrarEmpleado?id=' + ${empleado.employee_id}}">Borrar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    </body>
+</html>
