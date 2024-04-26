@@ -105,6 +105,21 @@ public class Employee {
         }
 
 
+        public double getSalary() {
+                return salary;
+        }
+
+        public void setSalary(double salary) {
+                this.salary = salary;
+        }
+
+        public double getCommission_pct() {
+                return commission_pct;
+        }
+
+        public void setCommission_pct(double commission_pct) {
+                this.commission_pct = commission_pct;
+        }
 
         public int getEnabled() {
                 return enabled;
